@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.HashMap;
@@ -42,6 +43,8 @@ public class FormController {
 
     //OPTIMIZANDO PARA RECIBIR COMO OBJETO
       @PostMapping("/form")
+      /*public String procesar(@Valid @ModelAttribute("user") Usuario usuario, BindingResult result,
+                             Model model){     en caso de que el objeto se quiera llamar con otro nombre en la plantilla utilizamos @ModelAttribute("user") */
     public String procesar(@Valid Usuario usuario, BindingResult result,
                            Model model){
           model.addAttribute("titulo", "Resultado form");
@@ -51,6 +54,7 @@ public class FormController {
                errores.put(err.getField(), "El campo ".concat(err.getField()).concat(" ").concat(err.getDefaultMessage()));
            });
            model.addAttribute("error", errores);
+           //automaticamente e internamente retorna al form el el objeto usuario con el nombre de la clase en minuscula para recuperar los datos de las cajas
             return "form";
        }
 
