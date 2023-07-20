@@ -54,13 +54,23 @@
     <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
   </div>
 
-  <div>
-    <label for="email">Email</label>
     <div>
-      <input type="text"  id="email" th:field="*{email}">
+      <label for="email">Email</label>
+      <div>
+        <input type="text"  id="email" th:field="*{email}">
+      </div>
+      <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"  ></div>
     </div>
-    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"  ></div>
-  </div>
+    <div>
+      <label for="cuenta">Cuenta:</label>
+      <div>
+        <input type="number"  id="cuenta"  th:field="*{cuenta}">
+      </div>
+      <div th:if="${#fields.hasErrors('cuenta')}" th:errors="*{cuenta}" ></div>
+
+    </div>
+
+
   <div>
 
     <div>
