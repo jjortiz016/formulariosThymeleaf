@@ -1,6 +1,9 @@
 package com.practica.formularios.models;
 
 import jakarta.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 public class Usuario {
     @Pattern(regexp="[0-9]{2}[.][\\d]{3}[.][\\d]{3}[-][A-Z]{1}")   //[0-9] es igual que [\\d] expresion regular
@@ -24,6 +27,10 @@ public class Usuario {
     @Min(5)
     @Max(5000)
     private Integer cuenta;
+
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fechaNacimiento;
 
     public String getId() {
         return id;
@@ -79,5 +86,13 @@ public class Usuario {
 
     public void setCuenta(Integer cuenta) {
         this.cuenta = cuenta;
+    }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 }
